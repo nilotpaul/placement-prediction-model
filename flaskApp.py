@@ -1,8 +1,10 @@
 import pickle
 import numpy as np
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app, resources={"/predict": {"origins": "*"}})
 
 pred_model = pickle.load(open("prediction_model.pkl", "rb"))
 
